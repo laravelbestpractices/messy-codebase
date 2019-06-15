@@ -8,6 +8,7 @@
     <title>A Demo of poorly written Laravel App</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="/css/app.css" rel="stylesheet" >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" rel="stylesheet" >
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -27,24 +28,6 @@
   </head>
   <body>
     <header>
-  <div class="collapse bg-dark" id="navbarHeader">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-8 col-md-7 py-4">
-          <h4 class="text-white">About</h4>
-          <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
-        </div>
-        <div class="col-sm-4 offset-md-1 py-4">
-          <h4 class="text-white">Contact</h4>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-            <li><a href="#" class="text-white">Like on Facebook</a></li>
-            <li><a href="#" class="text-white">Email me</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container d-flex justify-content-between">
       <a href="#" class="navbar-brand d-flex align-items-center">
@@ -62,6 +45,7 @@
       @php
 
         $cache_key = 'photos-cache-key';
+        $faker = \Faker\Factory::create();
 
         if(\Cache::has($cache_key))
             $photos = cache($cache_key);
@@ -79,13 +63,17 @@
           <div class="card mb-4 shadow-sm">
             <img src="https://picsum.photos/id/{{$photo->id}}/348/225"/>
             <div class="card-body">
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+              <p class="card-text">{{ $faker->realText }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                  <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <span class="oi oi-arrow-thick-top"></span>
+                  </button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary">
+                    <span class="oi oi-arrow-thick-bottom"></span>
+                  </button>
                 </div>
-                <small class="text-muted">9 mins</small>
+                <small class="text-muted">{{ mt_rand(100,10000)}} views</small>
               </div>
             </div>
           </div>
