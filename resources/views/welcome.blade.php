@@ -60,8 +60,16 @@
     <div class="container">
 
       @php
-        $photos = json_decode(file_get_contents("https://picsum.photos/v2/list"));
-        dd($photos);
+
+        $cache_key = 'photos-cache-key';
+
+        if(\Cache::has($cache_key))
+            $photos = cache($cache_key);
+        else{
+            $photos = json_decode(file_get_contents("https://picsum.photos/v2/list"));
+            cache([$cache_key => $photos], 60);
+        }
+
       @endphp
 
       <div class="row">
@@ -69,7 +77,7 @@
       @foreach($photos as $photo)
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img src="{{ $photo->download_url}}"/>
+            <img src="https://picsum.photos/id/{{$photo->id}}/348/225"/>
             <div class="card-body">
               <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -82,9 +90,8 @@
             </div>
           </div>
         </div>
-      </div>
       @endforeach
-
+      </div>
     </div>
   </div>
 
