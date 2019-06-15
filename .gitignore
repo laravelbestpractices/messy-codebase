@@ -2,6 +2,7 @@
 /public/hot
 /public/storage
 /storage/*.key
+/storage/redis/
 /vendor
 .env
 .phpunit.result.cache
@@ -9,3 +10,4 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+
