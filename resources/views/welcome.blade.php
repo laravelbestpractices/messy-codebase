@@ -73,7 +73,7 @@
                     <span class="oi oi-arrow-thick-bottom"></span>
                   </button>
                 </div>
-                <small class="text-muted">{{ mt_rand(100,10000)}} views</small>
+                <small class="text-muted">{{ mt_rand(100,10000)}} votes</small>
               </div>
             </div>
           </div>
