@@ -6,5 +6,7 @@ CREATE TABLE IF NOT EXISTS `Pictures` (
   `Votes` int NOT NULL default 0,
   `Author` varchar(100) NOT NULL default 'None',
   `Description` varchar(255)  default 'None',
+  `updated_at` DATETIME ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` DATETIME DEFAULT CURRENT_TIMESTAMP,
    PRIMARY KEY  (`picID`)
 );

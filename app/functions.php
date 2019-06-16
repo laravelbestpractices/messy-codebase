@@ -14,4 +14,12 @@ function InsertINTODB($i, $w, $h,$a, $d){
     $p->save();
 }
 
+function checkIFPhotoExists($photoid){
+    $p = Entries::where('photoid', $photoid)->first();
+    if($p !== null)
+        return true;
+    else 
+        return false;
+}
+
 ?>
