@@ -52,21 +52,27 @@
         if(\Cache::has($cache_key))
             $photos = cache($cache_key);
         else{
-            $photos = json_decode(file_get_contents("https://picsum.photos/v2/list"));
-            $photos_with_desc = array_map(function($item) use($faker){
-              $item->Description = $faker->realText;
-              $item->Votes = 0;
-              return $item;
-            }, $photos);
 
-            foreach($photos_with_desc as $photo){
-              $exists = checkIFPhotoExists($photo->id);
-              if(!$exists){
-                InsertINTODB($photo->id, $photo->width, $photo->height,$photo->author,$photo->Description);
-              }
+            $photos = \App\Entries::all();
+            if(count($photos)<=0){
+                $photos_from_api = json_decode(file_get_contents("https://picsum.photos/v2/list"));
+
+                $photos_with_desc = array_map(function($item) use($faker){
+                  $item->Description = $faker->realText;
+                  $item->Votes = 0;
+                  $item->photoid = $item->id;
+                  return $item;
+                }, $photos_from_api);
+
+                foreach($photos_with_desc as $photo){
+                  $exists = checkIFPhotoExists($photo->id);
+                  if(!$exists){
+                    InsertINTODB($photo->id, $photo->width, $photo->height,$photo->author,$photo->Description);
+                  }
+                }
+              $photos = $photos_with_desc;
+              cache([$cache_key => $photos], 60);
             }
-
-            cache([$cache_key => $photos_with_desc], 60);
         }
 
       @endphp
@@ -76,16 +82,16 @@
       @foreach($photos as $photo)
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img src="https://picsum.photos/id/{{$photo->id}}/348/225"/>
+            <img src="https://picsum.photos/id/{{$photo->photoid}}/348/225"/>
             <div class="card-body">
               <p class="card-text">{{ $photo->Description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">
-                    <a href="/track.php?vote_method=up&photoID={{$photo->id}}"><span class="oi oi-arrow-thick-top"></span></a>
+                    <a href="/track.php?vote_method=up&photoID={{$photo->photoid}}"><span class="oi oi-arrow-thick-top"></span></a>
                   </button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">
-                  <a href="/track.php?vote_method=down&photoID={{$photo->id}}"><span class="oi oi-arrow-thick-bottom"></span></a>
+                  <a href="/track.php?vote_method=down&photoID={{$photo->photoid}}"><span class="oi oi-arrow-thick-bottom"></span></a>
                   </button>
                 </div>
                 <small class="text-muted">{{ $photo->Votes}} votes</small>
