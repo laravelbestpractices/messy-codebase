@@ -88,10 +88,10 @@
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">
-                    <a href="/track.php?vote_method=up&photoID={{$photo->photoid}}"><span class="oi oi-arrow-thick-top"></span></a>
+                    <a href="/track.php?vote_method=up&photoID={{$photo->picID}}"><span class="oi oi-arrow-thick-top"></span></a>
                   </button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">
-                  <a href="/track.php?vote_method=down&photoID={{$photo->photoid}}"><span class="oi oi-arrow-thick-bottom"></span></a>
+                  <a href="/track.php?vote_method=down&photoID={{$photo->picID}}"><span class="oi oi-arrow-thick-bottom"></span></a>
                   </button>
                 </div>
                 <small class="text-muted">{{ $photo->Votes}} votes</small>
