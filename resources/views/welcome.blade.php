@@ -44,6 +44,8 @@
 
       @php
 
+      require(app_path(). '/functions.php');
+
         $cache_key = 'photos-cache-key';
         $faker = \Faker\Factory::create();
 
