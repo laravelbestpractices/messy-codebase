@@ -5,6 +5,6 @@ CREATE TABLE IF NOT EXISTS `Pictures` (
   `Height` int NOT NULL default 0,
   `Votes` int NOT NULL default 0,
   `Author` varchar(100) NOT NULL default 'None',
-  `Description` varchar(255)  default 'None'
-   PRIMARY KEY  (`id`)
+  `Description` varchar(255)  default 'None',
+   PRIMARY KEY  (`picID`)
 );

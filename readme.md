@@ -80,3 +80,7 @@ generate app key
 php artisan key:generate
 ```
 
+create db schema
+```
+mysql -u user -psecret messy -h mysql < storage/db.sql
+```
