@@ -31,7 +31,7 @@ if($photoID > 0)
             $sql = "UPDATE Pictures SET Votes = Votes - 1 WHERE picID = '$photoID'";
 
         $res = $pdo->exec($sql);
-        var_dump($res);
+        header('Location: ' . getenv('APP_URL'));
     } catch (\PDOException $e) {
          throw new \PDOException($e->getMessage(), (int)$e->getCode());
     }
