@@ -30,14 +30,3 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
-
-
-$('.btn-vote').each(function(i, el){
-    $(el).click(function(){
-        $.ajax({
-            type: 'GET',
-            url: '/track.php?vote_method='+ vote_method+ '&' + 'photoID=' + photo_id
-          });
-    });
-
-});
