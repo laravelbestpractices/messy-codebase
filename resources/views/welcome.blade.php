@@ -87,8 +87,8 @@
               <p class="card-text">{{ $photo->Description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary btn-vote" data-photo-id="{{$photo->picID}}" data-vote-direction="up"><
-                    span class="oi oi-arrow-thick-top"></span>
+                  <button type="button" class="btn btn-sm btn-outline-secondary btn-vote" data-photo-id="{{$photo->picID}}" data-vote-direction="up">
+                    <span class="oi oi-arrow-thick-top"></span>
                   </button>
                   <button type="button" class="btn btn-sm btn-outline-secondary btn-vote"  data-photo-id="{{$photo->picID}}"  data-vote-direction="down">
                       <span class="oi oi-arrow-thick-bottom"></span>
