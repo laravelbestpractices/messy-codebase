@@ -21,6 +21,7 @@ before_script:
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.dusk.staging .env
   - php artisan migrate
+  - php artisan key:generate
   - php artisan serve &
 
 services:
