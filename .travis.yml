@@ -11,10 +11,14 @@ install:
 before_install:
   - mysql -e 'CREATE DATABASE messy;'
 
+  addons:
+  chrome: stable
+
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
-  - php artisan dusk:chrome-driver 73
+  - php artisan dusk:chrome-driver 74
+  - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.dusk .env
   - php artisan serve &
 
