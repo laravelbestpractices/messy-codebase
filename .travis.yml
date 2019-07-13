@@ -15,6 +15,7 @@ before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
+  - php artisan dusk:update 74
   - cp .env.dusk .env
   - php artisan serve &
 
