@@ -67,7 +67,7 @@
                 foreach($photos_with_desc as $photo){
                   $exists = checkIFPhotoExists($photo->id);
                   if(!$exists){
-                    InsertINTODB($photo->id, $photo->width, $photo->height,$photo->author,$photo->Description);
+                    InsertINTODB($photo->id, $photo->width, $photo->height,$faker->firstName,$photo->Description);
                   }
                 }
               $photos = $photos_with_desc;
