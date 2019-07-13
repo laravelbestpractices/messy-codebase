@@ -61,6 +61,7 @@
                   $item->Description = $faker->realText;
                   $item->Votes = 0;
                   $item->photoid = $item->id;
+                  $item->picID = $item->id;
                   return $item;
                 }, $photos_from_api);
 
