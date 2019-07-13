@@ -19,7 +19,7 @@ before_script:
   - sh -e /etc/init.d/xvfb start
   - php artisan dusk:chrome-driver 74
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
-  - cp .env.dusk .env
+  - cp .env.dusk.staging .env
   - php artisan serve &
 
 services:
