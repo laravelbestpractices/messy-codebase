@@ -21,7 +21,7 @@ before_script:
   - ./vendor/laravel/dusk/bin/chromedriver-linux &
   - cp .env.dusk.staging .env
   - php artisan migrate
-  - mysql -u user -psecret messy -h 127.0.0.1 < ./storage/db.sql
+  - mysql -u travis -p messy -h 127.0.0.1 < ./storage/db.sql
   - php artisan key:generate
   - php artisan serve &
 
