@@ -61,13 +61,14 @@
                   $item->Description = $faker->realText;
                   $item->Votes = 0;
                   $item->photoid = $item->id;
+                  $item->picID = $item->id;
                   return $item;
                 }, $photos_from_api);
 
                 foreach($photos_with_desc as $photo){
                   $exists = checkIFPhotoExists($photo->id);
                   if(!$exists){
-                    InsertINTODB($photo->id, $photo->width, $photo->height,$photo->author,$photo->Description);
+                    InsertINTODB($photo->id, $photo->width, $photo->height,$faker->firstName,$photo->Description);
                   }
                 }
               $photos = $photos_with_desc;
