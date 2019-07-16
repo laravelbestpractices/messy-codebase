@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS `Pictures` (
+CREATE TABLE IF NOT EXISTS `pictures` (
   `picID` int(11) NOT NULL auto_increment,   
   `photoid` int NOT NULL default 0,
   `Width` int NOT NULL default 0,
