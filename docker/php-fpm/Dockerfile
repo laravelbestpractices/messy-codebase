@@ -6,6 +6,6 @@ RUN \
     export NR_INSTALL_SILENT=1 && \
      /tmp/newrelic-php5-*/newrelic-install install && \
       rm -rf /tmp/newrelic-php5-* /tmp/nrinstall* && \
-        sed -i -e 's/"REPLACE_WITH_REAL_KEY"/"07066880fcffaa4f8c1ac1a86d5ed2fddc6343be"/' \
+        sed -i -e 's/"REPLACE_WITH_REAL_KEY"/"f1cb1a206a9cd8e2f1f32951e60c08a57f06b36c"/' \
      -e 's/newrelic.appname = "PHP Application"/newrelic.appname = "messy-codebase.laravelbestpractices.com"/' \
          /usr/local/etc/php/conf.d/newrelic.ini
