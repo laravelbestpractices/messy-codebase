@@ -26,9 +26,9 @@ services:
         - frontend
         - backend
 
-
     php-fpm:
-      image: buonzz/laravel-php-fpm:0.0.1
+      build:
+        context: ./docker/php-fpm
       volumes:
         - ${APP_CODE_PATH_HOST}:${APP_CODE_PATH_CONTAINER}
       expose:
