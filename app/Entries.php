@@ -6,6 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Entries extends Model
 {
-    protected $table = 'Pictures';
+    protected $table = 'pictures';
     protected $primaryKey = 'picID';
 }
