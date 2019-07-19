@@ -32,9 +32,9 @@ class PhotoController extends Controller
                 }, $photos_from_api);
 
                 foreach($photos_with_desc as $photo){
-                  $exists = checkIFPhotoExists($photo->id);
+                  $exists = checkIFPhotoExists($photo->photoid);
                   if(!$exists){
-                    InsertINTODB($photo->id, $photo->width, $photo->height,$faker->firstName,$photo->Description);
+                    InsertINTODB($photo->photoid, $photo->width, $photo->height,$faker->firstName,$photo->Description);
                   }
                 }
               $photos = $photos_with_desc;

@@ -4,18 +4,18 @@ use App\Entries;
 
 function InsertINTODB($i, $w, $h,$a, $d){
     $p = new Entries();
-    $p->photoid = $i;
-    $p->Width = $w;
-    $p->Height = $h;
-    $p->Votes = 0;
-    $p->Author = $a;
-    $p->Description = $d;
+    $p->picsum_photo_id = $i;
+    $p->width = $w;
+    $p->height = $h;
+    $p->votes = 0;
+    $p->author = $a;
+    $p->description = $d;
 
     $p->save();
 }
 
 function checkIFPhotoExists($photoid){
-    $p = Entries::where('photoid', $photoid)->first();
+    $p = Entries::where('picsum_photo_id', $photoid)->first();
     if($p !== null)
         return true;
     else 
