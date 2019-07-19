@@ -26,9 +26,9 @@ if($photoID > 0)
         $pdo = new PDO($dsn, $user, $pass, $options);
         
         if($vote_method == 'up')
-            $sql = "UPDATE Pictures SET Votes = Votes + 1 WHERE picID = '$photoID'";
+            $sql = "UPDATE Pictures SET Votes = Votes + 1 WHERE id = '$photoID'";
          else
-            $sql = "UPDATE Pictures SET Votes = Votes - 1 WHERE picID = '$photoID'";
+            $sql = "UPDATE Pictures SET Votes = Votes - 1 WHERE id = '$photoID'";
 
         $res = $pdo->exec($sql);
         header('Location: ' . getenv('APP_URL'));
