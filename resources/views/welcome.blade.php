@@ -45,7 +45,7 @@
 
       @foreach($photos as $photo)
         @php
-            $image_url = "https://picsum.photos/id/". $photo->photoid . "/348/225";
+            $image_url = "https://picsum.photos/id/". $photo->picsum_photo_id . "/348/225";
             file_get_contents($image_url);
             $image_http_code=getHttpCode($http_response_header);
         @endphp
