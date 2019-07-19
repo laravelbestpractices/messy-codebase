@@ -45,7 +45,7 @@
 
       @foreach($photos as $photo)
         @php
-            $image_url = "https://picsum.photos/id/". $photo->photoid . "/348/225";
+            $image_url = "https://picsum.photos/id/". $photo->picsum_photo_id . "/348/225";
             file_get_contents($image_url);
             $image_http_code=getHttpCode($http_response_header);
         @endphp
@@ -55,17 +55,17 @@
           <div class="card mb-4 shadow-sm">
             <img src="{{ $image_url }}"/>
             <div class="card-body">
-              <p class="card-text">{{ $photo->Description }}</p>
+              <p class="card-text">{{ $photo->description }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <button type="button" class="btn btn-sm btn-outline-secondary">
-                    <a href="/track.php?vote_method=up&photoID={{$photo->picID}}"><span class="oi oi-arrow-thick-top"></span></a>
+                    <a href="/track.php?vote_method=up&photoID={{$photo->id}}"><span class="oi oi-arrow-thick-top"></span></a>
                   </button>
                   <button type="button" class="btn btn-sm btn-outline-secondary">
-                  <a href="/track.php?vote_method=down&photoID={{$photo->picID}}"><span class="oi oi-arrow-thick-bottom"></span></a>
+                  <a href="/track.php?vote_method=down&photoID={{$photo->id}}"><span class="oi oi-arrow-thick-bottom"></span></a>
                   </button>
                 </div>
-                <small class="text-muted">{{ $photo->Votes}} votes</small>
+                <small class="text-muted">{{ $photo->votes}} votes</small>
               </div>
             </div>
           </div>
