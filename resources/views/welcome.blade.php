@@ -81,9 +81,16 @@
       <div class="row">
 
       @foreach($photos as $photo)
+        @php
+            $image_url = "https://picsum.photos/id/". $photo->photoid . "/348/225";
+            file_get_contents($image_url);
+            $image_http_code=getHttpCode($http_response_header);
+        @endphp
+
+        @if($image_http_code == 200)
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
-            <img src="https://picsum.photos/id/{{$photo->photoid}}/348/225"/>
+            <img src="{{ $image_url }}"/>
             <div class="card-body">
               <p class="card-text">{{ $photo->Description }}</p>
               <div class="d-flex justify-content-between align-items-center">
@@ -100,6 +107,7 @@
             </div>
           </div>
         </div>
+        @endif
       @endforeach
       </div>
     </div>
